@@ -9,6 +9,8 @@ import Foundation
 
 import AsyncBluetooth
 
+import SysBadge
+
 extension BLESysBadge {
     public var modelNumber: String {
         get async throws {
@@ -44,15 +46,6 @@ extension BLESysBadge {
         get async throws {
             try await self.peripheral.readValue(forDISCharacteristic: .manufacturerName)!
         }
-    }
-    
-    public struct DeviceInformation {
-        let modelNumber: String
-        let serialNumber: String
-        let hardwareRevision: String
-        let firmwareRevision: String
-        let softwareRevision: String
-        let manufacturerName: String
     }
     
     /// Get the Device Infromation Table from the SysBadge.
