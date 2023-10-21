@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  DeviceInformation.swift
+//
 //
 //  Created by Finn Behrens on 20.10.23.
 //

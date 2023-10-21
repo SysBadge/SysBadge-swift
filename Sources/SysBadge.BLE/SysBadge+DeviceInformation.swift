@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  SysBadge+DeviceInformation.swift
+//
 //
 //  Created by Finn Behrens on 20.10.23.
 //
@@ -11,53 +11,52 @@ import AsyncBluetooth
 
 import SysBadge
 
-extension BLESysBadge {
-    public var modelNumber: String {
+public extension BLESysBadge {
+    var modelNumber: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .modelNumber)!
+            try await peripheral.readValue(forDISCharacteristic: .modelNumber)!
         }
     }
-    
-    public var serialNumber: String {
+
+    var serialNumber: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .serialNumber)!
+            try await peripheral.readValue(forDISCharacteristic: .serialNumber)!
         }
     }
-    
-    public var firmwareRevision: String {
+
+    var firmwareRevision: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .firmwareRevision)!
+            try await peripheral.readValue(forDISCharacteristic: .firmwareRevision)!
         }
     }
-    
-    public var hardwareRevision: String {
+
+    var hardwareRevision: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .hardwareRevision)!
+            try await peripheral.readValue(forDISCharacteristic: .hardwareRevision)!
         }
     }
-    
-    public var softwareRevision: String {
+
+    var softwareRevision: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .softwareRevision)!
+            try await peripheral.readValue(forDISCharacteristic: .softwareRevision)!
         }
     }
-    
-    public var manufacturerName: String {
+
+    var manufacturerName: String {
         get async throws {
-            try await self.peripheral.readValue(forDISCharacteristic: .manufacturerName)!
+            try await peripheral.readValue(forDISCharacteristic: .manufacturerName)!
         }
     }
-    
+
     /// Get the Device Infromation Table from the SysBadge.
-    public func deviceInformation() async throws -> DeviceInformation {
-        DeviceInformation(
-            modelNumber: try await self.modelNumber,
-            serialNumber: try await self.serialNumber,
-            hardwareRevision: try await self.hardwareRevision,
-            firmwareRevision: try await self.firmwareRevision,
-            softwareRevision: try await self.softwareRevision,
-            manufacturerName: try await self.manufacturerName
+    func deviceInformation() async throws -> DeviceInformation {
+        try DeviceInformation(
+            modelNumber: await modelNumber,
+            serialNumber: await serialNumber,
+            hardwareRevision: await hardwareRevision,
+            firmwareRevision: await firmwareRevision,
+            softwareRevision: await softwareRevision,
+            manufacturerName: await manufacturerName
         )
     }
 }
-

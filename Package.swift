@@ -18,7 +18,8 @@ let package = Package(
         .library(name: "SysBadge.BLE", targets: ["SysBadge.BLE"])
     ],
     dependencies: [
-        .package(url: "https://github.com/manolofdez/AsyncBluetooth", from: .init(stringLiteral: "1.8.1"))
+        .package(url: "https://github.com/manolofdez/AsyncBluetooth", from: .init(stringLiteral: "1.8.1")),
+        .package(url: "https://github.com/nicklockwood/SwiftFormat", from: "0.50.4"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.

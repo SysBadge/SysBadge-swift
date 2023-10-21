@@ -1,6 +1,6 @@
 //  Generic SysBadge protocol
 //
-//  Constants.swift
+//  SysBadge.swift
 //
 //
 //  Created by Finn Behrens on 20.10.23.

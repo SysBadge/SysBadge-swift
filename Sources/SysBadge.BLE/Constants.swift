@@ -6,8 +6,8 @@
 //  Created by Finn Behrens on 20.10.23.
 //
 
-import Foundation
 import CoreBluetooth
+import Foundation
 
 import AsyncBluetooth
 
@@ -18,7 +18,7 @@ public enum Services: CaseIterable, UUIDIterable {
 
 extension Services: RawRepresentable {
     public typealias RawValue = CBUUID
-    
+
     public init?(rawValue: RawValue) {
         if rawValue == Self.deviceInformationService.rawValue {
             self = .deviceInformationService
@@ -28,13 +28,13 @@ extension Services: RawRepresentable {
             return nil
         }
     }
-    
+
     public var rawValue: RawValue {
         switch self {
-            case .deviceInformationService:
-                CBUUID(string: "180A")
-            case .sysBadgeService:
-                CBUUID(string: "")
+        case .deviceInformationService:
+            CBUUID(string: "180A")
+        case .sysBadgeService:
+            CBUUID(string: "")
         }
     }
 }
@@ -42,10 +42,10 @@ extension Services: RawRepresentable {
 extension Services: CustomStringConvertible {
     public var description: String {
         switch self {
-            case .deviceInformationService:
-                "Device Information Service"
-            case .sysBadgeService:
-                "SysBadge Service"
+        case .deviceInformationService:
+            "Device Information Service"
+        case .sysBadgeService:
+            "SysBadge Service"
         }
     }
 }
@@ -54,8 +54,8 @@ public protocol UUIDIterable {
     static var allUUIDs: [CBUUID] { get }
 }
 
-extension UUIDIterable where Self: CaseIterable, Self: RawRepresentable<CBUUID> {
-    public static var allUUIDs: [CBUUID] {
-        Self.allCases.map(\.rawValue)
+public extension UUIDIterable where Self: CaseIterable, Self: RawRepresentable<CBUUID> {
+    static var allUUIDs: [CBUUID] {
+        allCases.map(\.rawValue)
     }
 }

@@ -1,5 +1,5 @@
-import XCTest
 @testable import SysBadge
+import XCTest
 
 final class SysBadge_swiftTests: XCTestCase {
     func testExample() throws {
