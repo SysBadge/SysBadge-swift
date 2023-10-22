@@ -6,10 +6,10 @@ final class System_swiftTests: XCTestCase {
         let decoder = JSONDecoder()
 
         var source = try decoder.decode(System.Source.self, from: Data("{\"PluralKit\": {\"id\": \"exmpl\"}}".utf8))
-        XCTAssertEqual(source, System.Source.PluralKit(id: "exmpl"))
+        XCTAssertEqual(source, System.Source.pluralKit(id: "exmpl"))
 
         source = try decoder.decode(System.Source.self, from: Data("{\"PronounsCC\": {\"id\": \"exmpl\"}}".utf8))
-        XCTAssertEqual(source, System.Source.PronounsCC(id: "exmpl"))
+        XCTAssertEqual(source, System.Source.pronounsCC(id: "exmpl"))
 
         // FIXME: add None test
     }
@@ -51,7 +51,7 @@ final class System_swiftTests: XCTestCase {
 
         let system = try JSONDecoder().decode(System.self, from: Data(json.utf8))
         XCTAssertEqual(system.name, "PluralKit Example System")
-        XCTAssertEqual(system.source_id, System.Source.PluralKit(id: "exmpl"))
+        XCTAssertEqual(system.source_id, System.Source.pluralKit(id: "exmpl"))
         XCTAssertEqual(system.members.count, 2)
     }
 }

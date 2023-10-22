@@ -8,7 +8,7 @@
 import CryptoKit
 import Foundation
 
-public struct File {
+public struct SystemFile {
     public var name: String
     public var flags: Flags
     public var payload: Data
@@ -27,9 +27,14 @@ public struct File {
     }
 }
 
-extension File {
+extension SystemFile {
     static let headerSize = 212
     static let magicNumber = Data([0x53, 0x59, 0x42, 0x44])
+
+    public init(contentsOf: URL, verify: Bool = true, options: Data.ReadingOptions = []) throws {
+        let data = try Data(contentsOf: contentsOf, options: options)
+        try self.init(data: data, verify: verify)
+    }
 
     public init(data: Data, verify: Bool = true) throws {
         let headerData = data[..<Self.headerSize]

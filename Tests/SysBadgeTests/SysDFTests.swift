@@ -5,12 +5,12 @@ final class SysDF_swiftTests: XCTestCase {
     func testParseExamplFile() throws {
         let data = Data(base64Encoded: "U1lCRAEAAAAJAAAAwAAAALMAAABQbHVyYWxLaXQgRXhhbXBsZSBTeXN0ZW0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFwAAAAAAAAABAAMAAQAAAAAAAAAJAAAAygAAABkAAAAnAAAAEQAAADIAAABQbHVyYWxLaXQgRXhhbXBsZSBTeXN0ZW0AAAAAAAAAAGV4bXBsAAAACAAAAAAAAgANAAAAWgAAABEAAABSAAAAFQAAAKoAAAAdAAAACgAAAE15cmlhZCBLaXQAAAAAAAB0aGV5L3RoZW0AAAAAAAAAVGVzdGVyIFQuIFRlc3Rpbmd0b24AAAAAAAAAAAAAAAB7Im5hbWUiOiJQbHVyYWxLaXQgRXhhbXBsZSBTeXN0ZW0iLCJzb3VyY2VfaWQiOnsiUGx1cmFsS2l0Ijp7ImlkIjoiZXhtcGwifX0sIm1lbWJlcnMiOlt7Im5hbWUiOiJNeXJpYWQgS2l0IiwicHJvbm91bnMiOiJ0aGV5L3RoZW0ifSx7Im5hbWUiOiJUZXN0ZXIgVC4gVGVzdGluZ3RvbiIsInByb25vdW5zIjoiIn1dfRJe6R7yNupK940QJI/MWlvMV3nWQnViDWNESTrOHWpk")!
 
-        let file = try File(data: data)
+        let file = try SystemFile(data: data)
 
         XCTAssertEqual(file.name, "PluralKit Example System")
         XCTAssertEqual(file.json!.name, "PluralKit Example System")
         XCTAssertEqual(file.json!.members.count, 2)
-        XCTAssertEqual(file.json!.source_id, .PluralKit(id: "exmpl"))
-        XCTAssertEqual(file.flags, File.Flags().union(.jsonBlob).union(.shaChecksum))
+        XCTAssertEqual(file.json!.source_id, .pluralKit(id: "exmpl"))
+        XCTAssertEqual(file.flags, SystemFile.Flags().union(.jsonBlob).union(.shaChecksum))
     }
 }
